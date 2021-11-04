@@ -108,13 +108,16 @@
                     <div class="platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card"
                         data-bind="class: $data.Categoria"
                         style="min-width: 40%; display: block; margin:10px 5px !important">
+                        <div>
+                            <p class="NombrePlato" data-bind="text: $data.NombrePlato"></p>
 
-                        <img class="card-img-top p-1"
-                            data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpg'}"
-                            alt="Card image cap" onerror="this.src='cursos/Imagen no disponible.png';">
+                            <img class="card-img-top p-1"
+                                data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpg'}"
+                                alt="Card image cap" onerror="this.src='cursos/Imagen no disponible.png';">
+                        </div>
 
 
-                        <p class="NombrePlato" data-bind="text: $data.NombrePlato"></p>
+
 
                         <div class="BotoneraImagen">
                             <h4 class="precio">

@@ -17,8 +17,11 @@ function cambiarFormato() {
     for (let element of elements) {
         if (contador == 0) {
             element.className = "formatoLista platoMenu col-11 col-md-9 col-sm-9 m-3 text-center card";
+            element.firstElementChild.className = "reverseRow";
         } else {
             element.className = "platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card";
+            element.firstElementChild.className = "";
+
         }
     }
     contador = contador == 0 ? 1 : 0;
