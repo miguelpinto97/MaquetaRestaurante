@@ -1,0 +1,127 @@
+@media (min-width: 768px){
+    #ImagenCabecera{
+        width: 60% !important;
+        margin-left: 20%;
+    }    
+}
+.NombrePlato{
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px 3px 2px 3px;
+}
+.ListaMenu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left: 1.5px; margin-right: 1.5px;
+}
+.BotoneraImagen{
+display: flex;
+flex-direction: row;
+}
+.precio{
+    position: absolute;
+    top: 100px;
+    left: 5px;
+}
+.agregar{
+    position: absolute;
+    top: 97px;
+    right: 5px;
+}
+.badge-menu {
+    color: #212529;
+    background-color: #07b9ff;
+}
+#ContenedorImagen{
+    background-image: url("Wallpaper PC Red.png");
+    background-size: 100%;
+    filter: blur(3px);
+
+}
+.Virtualx .TipoCurso{
+    color: #016064;
+    font-weight: bold;
+}
+.Presencialx .TipoCurso{
+    color: #B81b1b;
+    font-weight: bold;
+}
+
+.Virtualx{
+    border-color: #016064 !important;
+}
+
+.Presencialx{
+    border-color: #B81b1b !important;
+}
+
+.BotonesFlotantes a {
+    height: 52px;
+}
+
+.PunteroMouse:hover {
+    cursor: pointer
+}
+.BotonesFlotantes {
+    display: block;
+    width: 80px;
+    height: 60px;
+    color: #fff;
+    position: fixed;
+    right: -13px;
+    bottom: 15px;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    z-index: 999;
+}
+
+.MenuLateralSeleccionado {
+    background-color: #D0c5e7;
+    color: #1a237e;
+    font-weight: bold;
+    font-size: 17px;
+}
+    .MenuLateralSeleccionado:hover {
+        cursor: pointer;
+    }
+.MenuLateral {
+    background-color: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.MenuLateral:hover{
+    background-color: #D0c5e7;
+    color: #1a237e;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.cursoDisponible:hover {
+    cursor: pointer;
+}
+
+.formatoLista{
+    display: flex !important;
+    flex-direction: row;
+}
+.formatoLista>img{
+    width: 20%;
+    display: flex;
+}
+.formatoLista>p{
+    width: auto;
+    margin: 6px auto 0px auto;
+}
+.formatoLista >.BotoneraImagen > .precio{
+    top: 30px;
+    left: 70px;
+    font-size: 1.2em;
+}
+.formatoLista >.BotoneraImagen>.agregar{
+    top: 22px;
+    right: 6px;
+}
+
