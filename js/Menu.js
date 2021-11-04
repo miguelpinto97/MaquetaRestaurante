@@ -46,25 +46,25 @@ var Menu = [
    {
       "NombrePlato":"Arroz con Pollo",
       "Categoria":"Criollo",
-      "NombreImagen":"veronica",
+      "NombreImagen":"arrozconpollo",
       "Precio":"30.00"
    },
    {
       "NombrePlato":"Ají de Gallina",
       "Categoria":"Criollo",
-      "NombreImagen":"veronica",
+      "NombreImagen":"ajidegallina",
       "Precio":"25.00"
    },
    {
       "NombrePlato":"Ceviche",
       "Categoria":"Marino",
-      "NombreImagen":"veronica",
+      "NombreImagen":"ceviche",
       "Precio":"30.00"
    },
    {
       "NombrePlato":"Trío Marino",
       "Categoria":"Marino",
-      "NombreImagen":"veronica",
+      "NombreImagen":"triomarino",
       "Precio":"25.00"
    }
 ];
