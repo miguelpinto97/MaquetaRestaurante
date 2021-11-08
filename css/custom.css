@@ -22,8 +22,11 @@ flex-direction: row;
 }
 
 .badge-menu {
-    color: #212529;
-    background-color: #07b9ff;
+    background-color: whitesmoke;
+    border-color: #60581a;
+    border: 1.5px solid;
+    color: #60581a;
+
 }
 #ContenedorImagen{
     background-image: url("Wallpaper PC Red.png");
@@ -100,7 +103,7 @@ flex-direction: row;
 }
 .agregar{
     position: absolute;
-    bottom: 5%;
+    bottom: 1%;
     right: 3%;
 }
 .formatoLista{
