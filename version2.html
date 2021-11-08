@@ -19,16 +19,16 @@
 <body onload="filtrarMenuxCategoria()">
     <app>
 
-<header>
-    <nav class="MenuNavegacion">
-        <a href="index.html">
-            Version 1
-        </a>
-        <a href="version2.html">
-            Version 2
-        </a>
-    </nav>
-</header>
+        <header>
+            <nav class="MenuNavegacion">
+                <a href="index.html">
+                    Version 1
+                </a>
+                <a href="version2.html">
+                    Version 2
+                </a>
+            </nav>
+        </header>
         <div class="main">
             <div class="content" style=" padding-right: 12px !important;   padding-left: 12px!important;">
 
@@ -49,45 +49,35 @@
             </div>
 
 
-            <a class="nav-link PunteroMouse" onclick="cambiarFormato()">
-                <img src="img/iconoLista.svg" style="width: 7%;" /> Cambiar a Modo Lista
-            </a>
-
             <div id="ListaHorarios" class="ListaMenu" data-bind="foreach: Menu">
 
-                <div class="platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card" data-bind="class: $data.Categoria"
-                    style="min-width: 40%; display: block; margin:10px 5px !important">
-                    <div>
-                        <p class="NombrePlato" data-bind="text: $data.NombrePlato"></p>
 
-                        <img class="card-img-top p-1"
-                            data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpeg'}"
-                            alt="Card image cap" onerror="this.src='cursos/Imagen no disponible.png';">
+
+                <div class="card" style="max-width: 540px; margin: 10px 8px 0px 8px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 col-4" style="display: flex;">
+                            <img data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpeg'}"
+                                style="height: 100%;" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8 col-8">
+                            <div style="padding: 10px;">
+                                <h5 class="card-title" data-bind="text: $data.NombrePlato"></h5>
+                                <p class="card-text"><small class="text-muted">Aquí viene una breve descripción del
+                                        plato</small></p>
+                                <p class="card-text Precio2" style="margin-bottom: 0;"
+                                    data-bind="text:'S/ '+ $data.Precio"></p>
+                                </p>
+
+                            </div>
+                        </div>
                     </div>
-
-
-
-
-                    <div class="BotoneraImagen">
-                        <h4 class="precio">
-                            <span class="badge badge-menu" data-bind="text: 'S/'+$data.Precio"></span>
-                        </h4>
-
-                        <h4 class="PunteroMouse agregar">
-                            <span class="badge badge-menu">+</span>
-                        </h4>
-
-
-
-
-
-                    </div>
-
                 </div>
 
 
 
             </div>
+
+
 
         </div>
 

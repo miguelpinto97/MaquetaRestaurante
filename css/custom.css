@@ -73,7 +73,7 @@ flex-direction: row;
 }
 
 .MenuLateralSeleccionado {
-    background-color: #D0c5e7;
+    background-color: #928ca0;
     color: #1a237e;
     font-weight: bold;
     font-size: 17px;
@@ -132,3 +132,23 @@ flex-direction: row;
     flex-direction: row-reverse;
 }
 
+.MenuNavegacion{
+    justify-content: space-evenly;
+    display: flex;
+    padding: 15px 0;
+    background-color: black;
+    
+}
+.MenuNavegacion > a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.Precio2{
+    bottom: 2%;
+    margin-bottom: 0;
+    position: absolute;
+    font-weight: 600;
+}

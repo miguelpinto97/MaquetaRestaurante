@@ -31,6 +31,18 @@ var DiasSemana = [
 
 var Menu = [
    {
+      "NombrePlato":"Makis (25 cortes)",
+      "Categoria":"Marino",
+      "NombreImagen":"Makis",
+      "Precio":"22.00"
+   },
+   {
+      "NombrePlato":"Makis (25 cortes)",
+      "Categoria":"Marino",
+      "NombreImagen":"Makis",
+      "Precio":"22.00"
+   },
+   {
       "NombrePlato":"Arroz con Pollo",
       "Categoria":"Criollo",
       "NombreImagen":"arrozconpollo",
