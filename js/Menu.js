@@ -29,19 +29,6 @@ var DiasSemana = [
    }
 ];
 
-var Categorias = [
-   {
-      "Curso":"Todos los Cursos",
-      "CursoCorto":"0",
-      "DiasTipos":"LunesPresencial MartesPresencial MiercolesPresencial JuevesPresencial ViernesPresencial SabadoPresencial",
-      "Dias":"Lunes Martes Miercoles Jueves Viernes Sabado",
-      "Tipos":"Presencial"
-   },
-   { "Curso": "Criollo", "CursoCorto": "Criollo", "DiasTipos": "MartesVirtual", "Dias": "Martes", "Tipos": "Virtual" },
-   { "Curso": "Marino", "CursoCorto": "Marino", "DiasTipos": "MartesVirtual MiercolesVirtual", "Dias": "Martes Miercoles", "Tipos": "Virtual" }
-];
-
-
 var Menu = [
    {
       "NombrePlato":"Arroz con Pollo",
@@ -66,6 +53,18 @@ var Menu = [
       "Categoria":"Marino",
       "NombreImagen":"triomarino",
       "Precio":"25.00"
+   },
+   {
+      "NombrePlato":"Leche de Tigre",
+      "Categoria":"Marino",
+      "NombreImagen":"triomarino",
+      "Precio":"20.00"
+   },
+   {
+      "NombrePlato":"Lomo Saltado",
+      "Categoria":"Criollo",
+      "NombreImagen":"ajidegallina",
+      "Precio":"30.00"
    }
 ];
    

@@ -119,12 +119,12 @@ flex-direction: row;
     margin: 6px auto 0px auto;
 }
 .formatoLista >.BotoneraImagen > .precio{
-    bottom: 2%;
+    bottom: -5%;
     left: 37%;
     font-size: 1.2em;
 }
 .formatoLista >.BotoneraImagen>.agregar{
-    bottom: 4%;
+    bottom: -5%;
     right: 2%;
 }
 .reverseRow{

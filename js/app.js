@@ -1,14 +1,12 @@
 
 
+
+var Categorias = [];
+Categorias.push('Todos');
+[...new Set(Menu.map(function (element) { return element.Categoria }))].forEach(element => Categorias.push(element));
+
 ko.applyBindings(Menu, document.getElementById('ListaHorarios'));
 ko.applyBindings(Categorias, document.getElementById('ListaCursos'));
-ko.applyBindings(DiasSemana, document.getElementById('selector'));
-
-var MenuFiltrado;
-
-function filtrarMenuxCategoria(categoria) {
-    MenuFiltrado = Menu.filter(function (element) { return element.Categoria == 'Criollo' });
-}
 
 var contador = 0;
 function cambiarFormato() {

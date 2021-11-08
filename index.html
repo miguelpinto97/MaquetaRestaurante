@@ -4,17 +4,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Horario ILS</title>
+    <title>Carta Restaurante</title>
     <!--<base href="/">-->
     <link rel="shortcut icon" href="img/Logotype CEIR Purple.png">
     <base href=".">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
-    
+
 </head>
 
-<body>
+<body onload="filtrarMenuxCategoria()">
     <app>
 
 
@@ -34,63 +34,21 @@
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
+
                                 <label class="form-check-label w-100 text-center"
-                                    style="border: 2px solid #D0c5e7; margin: 5px 0 15px 0;">
-                                    ¿Qué día prefieres?
+                                    style="border: 2px solid #D0c5e7; margin: 15px 0;">
+                                    ¿Qué tipo de comida se te antoja hoy?
                                 </label>
-                                <div class="row col-md-12 col-sm-12 col-lg-12 justify-content-center" id="selector"
-                                    data-bind="foreach: DiasSemana">
+
+                                <div class="row col-md-12 col-sm-12 col-lg-12 justify-content-center" id="ListaCursos"
+                                    data-bind="foreach: Categorias">
                                     <div class="col-4 col-md-4 col-sm-4 col-lg-4">
                                         <p
-                                            data-bind="attr:{class: $data.Valor == '0'? 'MenuLateralSeleccionado text-center' : 'MenuLateral text-center', id:$data.Valor},
-                                                     text: $data.Dia, click: function(data) { filtroTotal($data.Valor , '-1','-1') }">
+                                            data-bind="attr:{class: $data == 'Todos'? 'MenuLateralSeleccionado text-center' : 'MenuLateral text-center', id:$data},
+                                                 text: $data, click: function(data) { filtroTotal($data , '-1','-1') }">
                                         </p>
                                     </div>
                                 </div>
-
-                                <div id="FiltroPresencial">
-                                    <label class="form-check-label w-100 text-center"
-                                        style="border: 2px solid #D0c5e7;margin: 0 0 15px 0;">
-                                        ¡Activa el Filtro de Clases Presenciales!
-                                    </label>
-                                    <div class="form-check form-switch"
-                                        style="display: flex; justify-content: center; margin: 6px;">
-                                        <input style="margin-right: 6px;" onchange="filtroTotal('-1','-1','0');"
-                                            class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-                                        <label class="form-check-label" for="flexSwitchCheckChecked" id="textoFiltro">
-                                            Filtro Desactivado
-                                        </label>
-                                    </div>
-                                </div>
-                                <label class="form-check-label w-100 text-center"
-                                    style="border: 2px solid #D0c5e7; margin: 15px 0;">
-                                    ¿Qué curso quieres llevar?
-                                </label>
-                                <div id="ListaCursos" class="row justify-content-center" data-bind="foreach: Categorias"
-                                    style="justify-content: space-evenly!important;">
-
-                                    <div class="cursoDisponible col-md-2 col-sm-2 col-3 m-1 text-center card"
-                                        data-bind="class: $data.Dias + ' ' + $data.Tipos + ' ' + $data.DiasTipos , attr:{id:$data.CursoCorto}"
-                                        style="min-width: 20%; display: block;">
-
-                                        <img class="card-img-top mt-2"
-                                            data-bind="attr:{src: 'cursos/'+ $data.CursoCorto + '.png'},
-                                                      click: function(data) { filtroTotal('-1', $data.CursoCorto,'-1') }" alt="Card image cap">
-
-                                        <div style="flex: 1 1 auto; margin-top: 8px;">
-
-                                            <p class="card-title" style="font-weight:bold; font-size: 11px;"
-                                                data-bind="text: $data.Curso"></p>
-
-                                        </div>
-
-                                    </div>
-
-
-
-                                </div>
-
-
 
                             </div>
                         </div>
@@ -100,8 +58,10 @@
                 </div>
 
 
+                <a class="nav-link PunteroMouse" onclick="cambiarFormato()">
+                    <img src="img/iconoLista.svg" style="width: 7%;"/> Cambiar a Modo Lista
+                </a>
 
-                <button onclick="cambiarFormato()">Cambiar</button>
                 <div id="ListaHorarios" class="ListaMenu" data-bind="foreach: Menu">
 
                     <div class="platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card"
