@@ -4,7 +4,8 @@ var Pedido = {
     "Categoria": "",
     "NombreImagen": ko.observable(""),
     "Precio": ko.observable("0"),
-    "Cantidad": ko.observable("0")
+    "Cantidad": ko.observable("0"),
+    "PrecioNumerico":ko.observable(0)
 }
 
 var Categorias = [];
@@ -159,6 +160,9 @@ function abrirModalPedido(data) {
     Pedido.Precio('S/. '+data.Precio);
     Pedido.NombreImagen('Imagenes Reducidas/'+ data.NombreImagen + '.jpeg');
     Pedido.Cantidad("0");
+    Pedido.PrecioNumerico(parseFloat(data.Precio,10));
+    cantidadPedido = 0;
+    document.getElementById("subtotal").innerHTML=""; 
     $("#ModalPedido").modal('show')
 }
 function cerrarModalPedido() {
@@ -172,5 +176,5 @@ function actualizarContadorPedido(cambio){
 
     cantidadPedido= cantidadPedido <0 ? 0 : cantidadPedido;
     Pedido.Cantidad(cantidadPedido+'');
-
+    document.getElementById("subtotal").innerHTML="Subtotal: S/. " + (cantidadPedido * Pedido.PrecioNumerico()); 
 }

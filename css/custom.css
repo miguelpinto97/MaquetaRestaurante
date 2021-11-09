@@ -170,3 +170,9 @@ flex-direction: row;
     height: 1.7rem;
     margin: 0 0.6rem;
 }
+
+#subtotal{
+    width: 90%;
+    text-align: initial;
+    margin: auto;
+}
