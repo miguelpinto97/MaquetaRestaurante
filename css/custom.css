@@ -55,7 +55,7 @@ flex-direction: row;
     height: 52px;
 }
 
-.PunteroMouse:hover {
+a:hover {
     cursor: pointer
 }
 .BotonesFlotantes {

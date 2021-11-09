@@ -160,10 +160,10 @@ function abrirModalPedido(data) {
     Pedido.NombrePlato(data.NombrePlato);
     Pedido.Precio('S/. '+data.Precio);
     Pedido.NombreImagen('Imagenes Reducidas/'+ data.NombreImagen + '.jpeg');
-    Pedido.Cantidad("0");
+    Pedido.Cantidad("1");
     Pedido.PrecioNumerico(parseFloat(data.Precio,10));
     Pedido.ListaIncluye(data.ListaIncluye);
-    cantidadPedido = 0;
+    cantidadPedido = 1;
     document.getElementById("subtotal").innerHTML=""; 
     $("#ModalPedido").modal('show')
 }
@@ -171,12 +171,12 @@ function cerrarModalPedido() {
     $("#ModalPedido").modal('hide')
 }
 
-var cantidadPedido = 0;
+var cantidadPedido = 1;
 
 function actualizarContadorPedido(cambio){
     cantidadPedido+=cambio;
 
-    cantidadPedido= cantidadPedido <0 ? 0 : cantidadPedido;
+    cantidadPedido= cantidadPedido <1 ? 1 : cantidadPedido;
     Pedido.Cantidad(cantidadPedido+'');
     document.getElementById("subtotal").innerHTML="Subtotal: S/. " + (cantidadPedido * Pedido.PrecioNumerico()); 
 }

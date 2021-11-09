@@ -4450,7 +4450,7 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 2px 4px rgb(50 50 93 / 10%),-1px 0 4px rgb(50 50 93 / 10%);  
   border-radius: 0.25rem;
 }
 .card > hr {
