@@ -1,9 +1,9 @@
 
 var Pedido = {
-    "NombrePlato": "",
+    "NombrePlato": ko.observable("Prueba"),
     "Categoria": "",
-    "NombreImagen": "",
-    "Precio": "0",
+    "NombreImagen": ko.observable(""),
+    "Precio": ko.observable("0"),
     "Cantidad": "0"
 }
 var Categorias = [];
@@ -12,10 +12,9 @@ Categorias.push('Todos');
 
 var ModalPedido = document.getElementById("ModalPedido");
 
-ko.applyBindings(Pedido, ModalPedido);
-ko.applyBindings(Menu, document.getElementById('ListaHorarios'));
-ko.applyBindings(Categorias, document.getElementById('ListaCursos'));
-
+ko.applyBindings(Pedido, document.getElementById("ModalPedido"));
+ko.applyBindings(Menu, document.getElementById("DivListaMenu"));
+ko.applyBindings(Categorias, document.getElementById("ListaCategorias"));
 var contador = 0;
 function cambiarFormato() {
     var elements = document.getElementsByClassName("platoMenu");
@@ -153,9 +152,13 @@ function limpiarSeleccionCurso() {
     }
 }
 
+function abrirModalPedido(data) {
+    Pedido.NombrePlato(data.NombrePlato);
+    Pedido.Precio('S/. '+data.Precio);
+    Pedido.NombreImagen('Imagenes Reducidas/'+ data.NombreImagen + '.jpeg');
 
-
-function abrirModalPedido(NombrePlato) {
-    Pedido = Menu.filter(element => element.NombrePlato == NombrePlato)[0];
-    ModalPedido.modal('show');
+    $("#ModalPedido").modal('show')
+}
+function cerrarModalPedido() {
+    $("#ModalPedido").modal('hide')
 }

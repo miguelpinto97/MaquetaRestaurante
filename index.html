@@ -36,7 +36,7 @@
                     ¿Qué tipo de comida se te antoja hoy?
                 </label>
 
-                <div class="row col-md-12 col-sm-12 col-lg-12 justify-content-center" id="ListaCursos"
+                <div class="row col-md-12 col-sm-12 col-lg-12 justify-content-center" id="ListaCategorias"
                     data-bind="foreach: Categorias">
                     <div class="col-4 col-md-4 col-sm-4 col-lg-4">
                         <p data-bind="attr:{class: $data == 'Todos'? 'MenuLateralSeleccionado text-center' : 'MenuLateral text-center', id:$data},
@@ -53,7 +53,7 @@
                 <img src="img/iconoLista.svg" style="width: 7%;" /> Cambiar a Modo Lista
             </a>
 
-            <div id="ListaHorarios" class="ListaMenu" data-bind="foreach: Menu">
+            <div id="DivListaMenu" class="ListaMenu" data-bind="foreach: Menu">
 
                 <div class="platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card" data-bind="class: $data.Categoria"
                     style="min-width: 40%; display: block; margin:10px 5px !important">
@@ -74,12 +74,8 @@
                         </h4>
 
                         <h4 class="PunteroMouse agregar">
-                            <span class="badge badge-menu">+</span>
+                            <span class="badge badge-menu"  data-bind="click: function(data, event) { abrirModalPedido(data) }">+</span>
                         </h4>
-
-
-
-
 
                     </div>
 
@@ -101,7 +97,35 @@
             </a>
         </div>
     </app>
-    <script src="js/jquery-3.6.0.js"></script>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" data-bind="text: Pedido.NombrePlato"></h5>
+                    <button type="button" class="btn-close" onclick="cerrarModalPedido()" aria-label="Close"></button>
+                </div>
+                <div>
+                    <img class="card-img-top p-1" data-bind="attr:{src: Pedido.NombreImagen}" alt="Card image cap"
+                        onerror="this.src='cursos/Imagen no disponible.png';">
+                </div>
+                <div class="BotoneraImagen">
+                    <h4 class="precio">
+                        <span class="badge badge-menu" data-bind="text: Pedido.Precio"></span>
+                    </h4>
+
+                    <h4 class="PunteroMouse agregar">
+                        <span class="badge badge-menu">+</span>
+                    </h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src="js/jquery-3.6.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
