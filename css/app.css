@@ -1,5 +1,79 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+@media (min-width: 768px){
+    #ImagenCabecera{
+        width: 60% !important;
+        margin-left: 20%;
+    }    
+}
+#ContenedorImagen{
+    background-image: url("Wallpaper PC Red.png");
+    background-size: 100%;
+    filter: blur(3px);
+
+}
+.Virtualx .TipoCurso{
+    color: #016064;
+    font-weight: bold;
+}
+.Presencialx .TipoCurso{
+    color: #B81b1b;
+    font-weight: bold;
+}
+
+.Virtualx{
+    border-color: #016064 !important;
+}
+
+.Presencialx{
+    border-color: #B81b1b !important;
+}
+
+.BotonesFlotantes a {
+    height: 52px;
+}
+
+.PunteroMouse:hover {
+    cursor: pointer
+}
+.BotonesFlotantes {
+    display: block;
+    width: 80px;
+    height: 60px;
+    color: #fff;
+    position: fixed;
+    right: 0px;
+    bottom: 15px;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    z-index: 999;
+}
+
+.MenuLateralSeleccionado {
+    background-color: #D0c5e7;
+    color: #1a237e;
+    font-weight: bold;
+    font-size: 17px;
+}
+    .MenuLateralSeleccionado:hover {
+        cursor: pointer;
+    }
+.MenuLateral {
+    background-color: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.MenuLateral:hover{
+    background-color: #D0c5e7;
+    color: #1a237e;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.cursoDisponible:hover {
+    cursor: pointer;
+}
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -16,7 +90,8 @@ a, .btn-link {
 
 app {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .top-row {

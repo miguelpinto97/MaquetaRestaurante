@@ -4,89 +4,147 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Carta Restaurante</title>
+    <title>Horario ILS</title>
     <!--<base href="/">-->
     <link rel="shortcut icon" href="img/Logotype CEIR Purple.png">
     <base href=".">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <app>
 
-        <header>
-            <nav class="MenuNavegacion">
-                <a href="index.html">
-                    Version 1
-                </a>
-                <a href="version2.html">
-                    Version 2
-                </a>
-            </nav>
-        </header>
+
         <div class="main">
             <div class="content" style=" padding-right: 12px !important;   padding-left: 12px!important;">
 
-                <label class="form-check-label w-100 text-center" style="border: 2px solid #D0c5e7; margin: 15px 0;">
-                    ¿Qué tipo de comida se te antoja hoy?
-                </label>
+                <img style="width:100%; " src="img/Wallpaper PC Purple.png">
 
-                <div class="row col-md-12 col-sm-12 col-lg-12 justify-content-center" id="ListaCategorias"
-                    data-bind="foreach: Categorias">
-                    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
-                        <p data-bind="attr:{class: $data == 'Todos'? 'MenuLateralSeleccionado text-center' : 'MenuLateral text-center', id:$data},
-                             text: $data, click: function(data) { filtroTotal($data , '-1','-1') }">
-                        </p>
+                <br> <br>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                ¡Filtra y encuentra tu Horario Ideal!
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <label class="form-check-label w-100 text-center" style="border: 2px solid #D0c5e7; margin: 5px 0 15px 0;">
+                                    ¿Qué día prefieres?
+                                </label>   
+                                <div class="row col-md-12 col-sm-12 col-lg-12 justify-content-center" id="selector"
+                                    data-bind="foreach: DiasSemana">
+                                    <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+                                        <p
+                                            data-bind="attr:{class: $data.Valor == '0'? 'MenuLateralSeleccionado text-center' : 'MenuLateral text-center', id:$data.Valor},
+                                                     text: $data.Dia, click: function(data) { filtroTotal($data.Valor , '-1','-1') }">
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div id="FiltroPresencial">
+                                    <label class="form-check-label w-100 text-center" style="border: 2px solid #D0c5e7;margin: 0 0 15px 0;">
+                                        ¡Activa el Filtro de Clases Presenciales!
+                                    </label>               
+                                    <div class="form-check form-switch" style="display: flex; justify-content: center; margin: 6px;">
+                                        <input style="margin-right: 6px;" 
+                                            onchange="filtroTotal('-1','-1','0');"
+                                            class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked" id="textoFiltro">
+                                            Filtro Desactivado
+                                        </label>
+                                    </div>
+                                </div>
+                                <label class="form-check-label w-100 text-center" style="border: 2px solid #D0c5e7; margin: 15px 0;">
+                                    ¿Qué curso quieres llevar?
+                                </label>   
+                                <div id="ListaCursos" class="row justify-content-center"
+                                    data-bind="foreach: CursosDisponibles"
+                                    style="justify-content: space-evenly!important;">
+
+                                    <div class="cursoDisponible col-md-2 col-sm-2 col-3 m-1 text-center card"
+                                        data-bind="class: $data.Dias + ' ' + $data.Tipos + ' ' + $data.DiasTipos , attr:{id:$data.CursoCorto}"
+                                        style="min-width: 20%; display: block;">
+
+                                        <img class="card-img-top mt-2" data-bind="attr:{src: 'cursos/'+ $data.CursoCorto + '.png'},
+                                                      click: function(data) { filtroTotal('-1', $data.CursoCorto,'-1') }"
+                                            alt="Card image cap">
+
+                                        <div style="flex: 1 1 auto; margin-top: 8px;">
+
+                                            <p class="card-title" style="font-weight:bold; font-size: 11px;"
+                                                data-bind="text: $data.Curso"></p>
+
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
 
 
-            </div>
 
 
-            <a class="nav-link PunteroMouse" onclick="cambiarFormato()">
-                <img src="img/iconoLista.svg" style="width: 7%;" /> Cambiar a Modo Lista
-            </a>
+                <div id="ListaHorarios" class="row justify-content-center" data-bind="foreach: Horarios"
+                    style="margin-left: 1.5px; margin-right: 1.5px;">
 
-            <div id="DivListaMenu" class="ListaMenu" data-bind="foreach: Menu">
+                    <div class="clase col-md-3 col-sm-9 m-3 text-center card"
+                        data-bind="class: $data.Dia +  ' ' + $data.CursoCorto +' ' +$data.Tipo +'x'"
+                        style="min-width: 40%; display: block;">
 
-                <div class="platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card" data-bind="class: $data.Categoria"
-                    style="min-width: 40%; display: block; margin:10px 5px !important">
-                    <div>
-                        <p class="NombrePlato" data-bind="text: $data.NombrePlato"></p>
-
-                        <img class="card-img-top p-1"
-                            data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpeg'}"
+                        <img class="card-img-top mt-2"
+                            data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpg'}"
                             alt="Card image cap" onerror="this.src='cursos/Imagen no disponible.png';">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title" style="font-weight:bold" data-bind="text: $data.Curso"></h5>
+
+                            <p class="card-text" style="margin-bottom: 0.2rem !important"
+                                data-bind="text: $data.Maestro"></p>
+
+                            <p class="card-text" style="margin-bottom: 0.2rem !important"
+                                data-bind="text: $data.Dia + ' | ' + $data.Hora"></p>
+
+                            <p class="card-text TipoCurso" style="margin-bottom: 0.2rem !important"
+                                data-bind="text: 'Curso '+ $data.Tipo"></p>
+
+                            <div class="row justify-content-center">
+
+                                <a class="btn btn-primary btn-sm col-12 m-2"
+                                    data-bind="attr:{href: $data.LinkInscripcion}">
+                                    Inscribrirme en el Curso</a>
+
+                                <a class="btn btn-success btn-sm col-12" data-bind="attr:{href: $data.LinkWhatsapp}">
+                                    Unirme al Grupo de Whatsapp</a>
+
+                            </div>
+
+
+
+                        </div>
+
                     </div>
 
 
-
-
-                    <div class="BotoneraImagen">
-                        <h4 class="precio">
-                            <span class="badge badge-menu" data-bind="text: 'S/'+$data.Precio"></span>
-                        </h4>
-
-                        <h4 class="PunteroMouse agregar">
-                            <span class="badge badge-menu"
-                                data-bind="click: function(data, event) { abrirModalPedido(data) }">+</span>
-                        </h4>
-
-                    </div>
 
                 </div>
 
-
-
             </div>
-
-        </div>
 
 
 
@@ -98,68 +156,17 @@
             </a>
         </div>
     </app>
-
-
-     <!-- Modal -->
-     <div class="modal fade" id="ModalPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <div class="card" style="max-width: 540px; margin: 10px 8px 5px 8px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 col-6" style="display: flex;">
-                            <img data-bind="attr:{src: Pedido.NombreImagen}" style="height: 100%;"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8 col-6">
-                            <div style="padding: 10px;">
-                                <h5 class="card-title" data-bind="text: Pedido.NombrePlato"></h5>
-                                <p class="card-text ListaIncluyePedido"><small class="text-muted">Aquí viene una breve descripción del
-                                        plato.</small></p>
-                                <p class="card-text ListaIncluyePedido"><small class="text-muted">Incluye:</small></p>
-                                <div data-bind="foreach: Pedido.ListaIncluye" style="margin-bottom: 12%;">
-                                    
-                                        <p class="card-text ListaIncluyePedido"><small data-bind="text: '- '+$data" class="text-muted">
-                                            </small></p>
-                                    
-                                        </div>
-                                <p class="card-text Precio2" data-bind="text: Pedido.Precio">
-                                </p>
-                                <div class="Agregar2" style="display: flex;  padding: 0.5px;">
-                                    <a onclick="actualizarContadorPedido(-1)">
-                                        -
-                                    </a>
-                                    <input class="form-control" style="padding: 0.3rem  0.3rem;"
-                                        data-bind="value: Pedido.Cantidad">
-                                    <a onclick="actualizarContadorPedido(1)">
-                                        +
-                                    </a>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="subtotal">
-
-                </div>
-                <div>
-                    <button class="btn btn-success" style="display: block; width: 90%; margin: 5px auto 10px auto;">
-                        Agregar al pedido
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type='text/javascript' src="js/jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <script src="js/Menu.js"></script>
+    <script src="js/Horario.js"></script>
     <script type='text/javascript' src='js/knockout-3.5.1.js'></script>
     <script src="js/app.js"></script>
 

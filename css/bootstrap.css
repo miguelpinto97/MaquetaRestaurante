@@ -4450,7 +4450,7 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  box-shadow: 0 2px 4px rgb(50 50 93 / 10%),-1px 0 4px rgb(50 50 93 / 10%);  
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .card > hr {
@@ -4822,7 +4822,7 @@ textarea.form-control-lg {
 
 .badge {
   display: inline-block;
-  padding: 0.25em 0.4em;
+  padding: 0.35em 0.65em;
   font-size: 0.75em;
   font-weight: 700;
   line-height: 1;
