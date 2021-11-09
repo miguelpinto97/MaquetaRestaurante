@@ -176,3 +176,6 @@ flex-direction: row;
     text-align: initial;
     margin: auto;
 }
+.ListaIncluyePedido{
+    margin-bottom: 2px;
+}

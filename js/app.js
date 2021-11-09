@@ -5,7 +5,8 @@ var Pedido = {
     "NombreImagen": ko.observable(""),
     "Precio": ko.observable("0"),
     "Cantidad": ko.observable("0"),
-    "PrecioNumerico":ko.observable(0)
+    "PrecioNumerico":ko.observable(0),
+    "ListaIncluye":ko.observable(["Nada"])
 }
 
 var Categorias = [];
@@ -161,6 +162,7 @@ function abrirModalPedido(data) {
     Pedido.NombreImagen('Imagenes Reducidas/'+ data.NombreImagen + '.jpeg');
     Pedido.Cantidad("0");
     Pedido.PrecioNumerico(parseFloat(data.Precio,10));
+    Pedido.ListaIncluye(data.ListaIncluye);
     cantidadPedido = 0;
     document.getElementById("subtotal").innerHTML=""; 
     $("#ModalPedido").modal('show')

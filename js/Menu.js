@@ -3,13 +3,15 @@ var Menu = [
       "NombrePlato":"Makis (25 cortes)",
       "Categoria":"Marino",
       "NombreImagen":"Makis",
-      "Precio":"22.00"
+      "Precio":"22.00",
+      "ListaIncluye":["25 Cortes de Makis","Salsa Acevichada","2 Palillos por pedido"]
    },
    {
       "NombrePlato":"Makis (25 cortes)",
       "Categoria":"Marino",
       "NombreImagen":"Makis",
-      "Precio":"22.00"
+      "Precio":"22.00",
+      "ListaIncluye":["25 Cortes de Makis","Salsa Acevichada","2 Palillos por pedido"]
    },
    {
       "NombrePlato":"Arroz con Pollo",

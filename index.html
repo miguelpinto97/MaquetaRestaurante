@@ -100,23 +100,29 @@
     </app>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="ModalPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <!-- Modal -->
+     <div class="modal fade" id="ModalPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="card" style="max-width: 540px; margin: 10px 8px 5px 8px;">
                     <div class="row g-0">
-                        <div class="col-md-4 col-4" style="display: flex;">
+                        <div class="col-md-4 col-6" style="display: flex;">
                             <img data-bind="attr:{src: Pedido.NombreImagen}" style="height: 100%;"
                                 class="img-fluid rounded-start" alt="...">
                         </div>
-                        <div class="col-md-8 col-8">
+                        <div class="col-md-8 col-6">
                             <div style="padding: 10px;">
                                 <h5 class="card-title" data-bind="text: Pedido.NombrePlato"></h5>
-                                <p class="card-text"><small class="text-muted">Aquí viene una breve descripción del
-                                        plato</small></p>
-
+                                <p class="card-text ListaIncluyePedido"><small class="text-muted">Aquí viene una breve descripción del
+                                        plato.</small></p>
+                                <p class="card-text ListaIncluyePedido"><small class="text-muted">Incluye:</small></p>
+                                <div data-bind="foreach: Pedido.ListaIncluye" style="margin-bottom: 12%;">
+                                    
+                                        <p class="card-text ListaIncluyePedido"><small data-bind="text: '- '+$data" class="text-muted">
+                                            </small></p>
+                                    
+                                        </div>
                                 <p class="card-text Precio2" data-bind="text: Pedido.Precio">
                                 </p>
                                 <div class="Agregar2" style="display: flex;  padding: 0.5px;">
