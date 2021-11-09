@@ -48,6 +48,20 @@ var Menu = [
       "Categoria":"Criollo",
       "NombreImagen":"ajidegallina",
       "Precio":"30.00"
+   },
+   {
+      "NombrePlato":"Shawarma de Pollo",
+      "Categoria":"Venezolano",
+      "NombreImagen":"ShawarmaPollo",
+      "Precio":"10.00",
+      "ListaIncluye":["1 Shawarma de Pollo","Salsa de Ajo","Salsa Tocineta"]
+   },
+   {
+      "NombrePlato":"Shawarma de Carne",
+      "Categoria":"Venezolano",
+      "NombreImagen":"ShawarmaCarne",
+      "Precio":"12.00",
+      "ListaIncluye":["1 Shawarma de Carne","Salsa de Ajo","Salsa Tocineta"]
    }
 ];
    
