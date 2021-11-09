@@ -1,10 +1,18 @@
 
-
-
+var Pedido = {
+    "NombrePlato": "",
+    "Categoria": "",
+    "NombreImagen": "",
+    "Precio": "0",
+    "Cantidad": "0"
+}
 var Categorias = [];
 Categorias.push('Todos');
 [...new Set(Menu.map(function (element) { return element.Categoria }))].forEach(element => Categorias.push(element));
 
+var ModalPedido = document.getElementById("ModalPedido");
+
+ko.applyBindings(Pedido, ModalPedido);
 ko.applyBindings(Menu, document.getElementById('ListaHorarios'));
 ko.applyBindings(Categorias, document.getElementById('ListaCursos'));
 
@@ -143,4 +151,11 @@ function limpiarSeleccionCurso() {
 
         coleccion[i].style.borderColor = 'rgba(0,0,0,.125)';
     }
+}
+
+
+
+function abrirModalPedido(NombrePlato) {
+    Pedido = Menu.filter(element => element.NombrePlato == NombrePlato)[0];
+    ModalPedido.modal('show');
 }
