@@ -74,7 +74,8 @@
                         </h4>
 
                         <h4 class="PunteroMouse agregar">
-                            <span class="badge badge-menu"  data-bind="click: function(data, event) { abrirModalPedido(data) }">+</span>
+                            <span class="badge badge-menu"
+                                data-bind="click: function(data, event) { abrirModalPedido(data) }">+</span>
                         </h4>
 
                     </div>
@@ -103,23 +104,36 @@
     <div class="modal fade" id="ModalPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" data-bind="text: Pedido.NombrePlato"></h5>
-                    <button type="button" class="btn-close" onclick="cerrarModalPedido()" aria-label="Close"></button>
-                </div>
-                <div>
-                    <img class="card-img-top p-1" data-bind="attr:{src: Pedido.NombreImagen}" alt="Card image cap"
-                        onerror="this.src='cursos/Imagen no disponible.png';">
-                </div>
-                <div class="BotoneraImagen">
-                    <h4 class="precio">
-                        <span class="badge badge-menu" data-bind="text: Pedido.Precio"></span>
-                    </h4>
 
-                    <h4 class="PunteroMouse agregar">
-                        <span class="badge badge-menu">+</span>
-                    </h4>
+                <div class="card" style="max-width: 540px; margin: 10px 8px 10px 8px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 col-4" style="display: flex;">
+                            <img data-bind="attr:{src: Pedido.NombreImagen}" style="height: 100%;"
+                                class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8 col-8">
+                            <div style="padding: 10px;">
+                                <h5 class="card-title" data-bind="text: Pedido.NombrePlato"></h5>
+                                <p class="card-text"><small class="text-muted">Aquí viene una breve descripción del
+                                        plato</small></p>
 
+                                <p class="card-text Precio2" data-bind="text: Pedido.Precio">
+                                </p>
+                                <div class="Agregar2" style="display: flex;  padding: 0.5px;">
+                                    <a onclick="actualizarContadorPedido(-1)">
+                                        -
+                                    </a>
+                                    <input class="form-control" style="padding: 0.3rem  0.3rem;"
+                                        data-bind="value: Pedido.Cantidad">
+                                    <a onclick="actualizarContadorPedido(1)">
+                                        +
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -160,3 +160,13 @@ flex-direction: row;
     right: 3%;
     text-decoration: none;
 }
+
+.Agregar2 >a{
+    color : #0366d6 !important
+}
+
+.Agregar2 >input{
+    width: 2rem;
+    height: 1.7rem;
+    margin: 0 0.6rem;
+}

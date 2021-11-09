@@ -4,8 +4,9 @@ var Pedido = {
     "Categoria": "",
     "NombreImagen": ko.observable(""),
     "Precio": ko.observable("0"),
-    "Cantidad": "0"
+    "Cantidad": ko.observable("0")
 }
+
 var Categorias = [];
 Categorias.push('Todos');
 [...new Set(Menu.map(function (element) { return element.Categoria }))].forEach(element => Categorias.push(element));
@@ -16,6 +17,7 @@ ko.applyBindings(Pedido, document.getElementById("ModalPedido"));
 ko.applyBindings(Menu, document.getElementById("DivListaMenu"));
 ko.applyBindings(Categorias, document.getElementById("ListaCategorias"));
 var contador = 0;
+
 function cambiarFormato() {
     var elements = document.getElementsByClassName("platoMenu");
 
@@ -156,9 +158,19 @@ function abrirModalPedido(data) {
     Pedido.NombrePlato(data.NombrePlato);
     Pedido.Precio('S/. '+data.Precio);
     Pedido.NombreImagen('Imagenes Reducidas/'+ data.NombreImagen + '.jpeg');
-
+    Pedido.Cantidad("0");
     $("#ModalPedido").modal('show')
 }
 function cerrarModalPedido() {
     $("#ModalPedido").modal('hide')
+}
+
+var cantidadPedido = 0;
+
+function actualizarContadorPedido(cambio){
+    cantidadPedido+=cambio;
+
+    cantidadPedido= cantidadPedido <0 ? 0 : cantidadPedido;
+    Pedido.Cantidad(cantidadPedido+'');
+
 }
