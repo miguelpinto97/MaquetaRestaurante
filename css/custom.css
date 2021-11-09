@@ -146,11 +146,12 @@ a:hover {
     font-size: 20px;
     font-weight: bold;
 }
-.Precio2{
-    bottom: 2%;
+.DivPrecios{
+    bottom: -5%;
     margin-bottom: 0;
     position: absolute;
     font-weight: 600;
+    display: flex;
 }
 
 .Agregar2{
@@ -162,7 +163,7 @@ a:hover {
 }
 
 .Agregar2 >a{
-    color : #0366d6 !important
+    color : #0366d6 !important;
 }
 
 .Agregar2 >input{
@@ -178,4 +179,11 @@ a:hover {
 }
 .ListaIncluyePedido{
     margin-bottom: 2px;
+}
+.PrecioTienda{
+    text-decoration:line-through;
+    color: lightslategray;
+    font-size:13px;
+    margin-right: 4px;
+    margin-top: 2px;
 }

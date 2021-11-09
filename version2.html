@@ -64,9 +64,16 @@
                             <div style="padding: 10px;">
                                 <h5 class="card-title" data-bind="text: $data.NombrePlato"></h5>
                                 <p class="card-text"><small class="text-muted">Aquí viene una breve descripción del
-                                        plato.</small><a style="color : #0366d6 !important"> Ver más.</a></p>
-                                <p class="card-text Precio2" data-bind="text:'S/ '+ $data.Precio">
-                                </p>
+                                        plato.</small><a style="color : #0366d6 !important;font-size: 13.5px;"> Ver
+                                        más.</a></p>
+                                <div class="DivPrecios">
+                                    <p class="card-text PrecioTienda"
+                                        data-bind="text:'S/ '+ $data.Precio">
+                                    </p>
+                                    <p class="card-text"
+                                        data-bind="text:' S/ '+ $data.Precio">
+                                    </p>
+                                </div>
                                 <a class="Agregar2" data-bind="click: function(data, event) { abrirModalPedido(data) }">
                                     Añadir +
                                 </a>
@@ -129,8 +136,12 @@
                                         </small></p>
 
                                 </div>
-                                <p class="card-text Precio2" data-bind="text: Pedido.Precio">
-                                </p>
+                                <div class="DivPrecios" style="bottom: 1%;">
+                                    <p class="card-text"
+                                        data-bind="text:Pedido.Precio">
+                                    </p>
+                                </div>
+
                                 <div class="Agregar2" style="display: flex;  padding: 0.5px;">
                                     <a onclick="actualizarContadorPedido(-1)">
                                         -
