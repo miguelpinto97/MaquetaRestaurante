@@ -1,68 +1,75 @@
 
+var Pedido = {
+    "NombrePlato": ko.observable("Prueba"),
+    "Categoria": "",
+    "NombreImagen": ko.observable(""),
+    "Precio": ko.observable("0"),
+    "Cantidad": ko.observable("0"),
+    "PrecioNumerico": ko.observable(0),
+    "ListaIncluye": ko.observable(["Nada"])
+}
 
-ko.applyBindings(Horarios, document.getElementById('ListaHorarios'));
-ko.applyBindings(CursosDisponibles, document.getElementById('ListaCursos'));
-ko.applyBindings(DiasSemana, document.getElementById('selector'));
+var Categorias = [];
+Categorias.push('Todos');
+[...new Set(Menu.map(function (element) { return element.Categoria }))].forEach(element => Categorias.push(element));
 
+var ModalPedido = document.getElementById("ModalPedido");
 
+ko.applyBindings(Pedido, document.getElementById("ModalPedido"));
+ko.applyBindings(Menu, document.getElementById("DivListaMenu"));
+ko.applyBindings(Categorias, document.getElementById("ListaCategorias"));
+var contador = 0;
 
-var valorDia = '0';
-var valorCurso = '0';
-var valorSwitch = false;
+function cambiarFormato() {
+    var elements = document.getElementsByClassName("platoMenu");
 
-function filtroTotal(vDia, vCurso, vSwitch) {
+    for (let element of elements) {
+        if (contador == 0) {
+            element.className = "formatoLista platoMenu col-11 col-md-9 col-sm-9 m-3 text-center card";
+            element.firstElementChild.className = "reverseRow";
+        } else {
+            element.className = "platoMenu col-5 col-md-3 col-sm-9 m-3 text-center card";
+            element.firstElementChild.className = "";
 
-    var claseDia = '';
-    var claseTipo = '';
-    var claseDiaTipo = '';
-    var claseCurso = '';
+        }
+    }
+    contador = contador == 0 ? 1 : 0;
+}
 
-    if (vDia != '-1') {
-        valorDia = vDia;
-        valorCurso = '0';
-        limpiarSeleccionCurso();
-        actualizarSeleccionMenuDias();
-    } else if (vCurso != '-1') {
-        valorCurso = vCurso;
-        actualizarSeleccionCurso();
-    } else if (vSwitch != '-1') {
-        valorSwitch = !valorSwitch;
+var valorCategoria = '0';
 
-        document.getElementById('textoFiltro').innerHTML = valorSwitch == true ? 'Filtro Activado':'Filtro Desactivado';
+function filtroTotal(vCategoria) {
 
+    var cssMenu = '';
+    valorCategoria = vCategoria;
+    actualizarSeleccionMenuCategorias();
+
+    if (valorCategoria == 'Todos') {
+        OcultarMostrarTransicion('#DivListaMenu', '0');
+
+        OcultarMostrarTransicion('#DivListaMenu', '1');
+
+        OcultarMostrar('.platoMenu', 'none');
+
+        OcultarMostrar('.platoMenu', 'block'); 
+    }
+    else {
+        OcultarMostrarTransicion('#DivListaMenu', '0');
+
+        OcultarMostrarTransicion('#DivListaMenu', '1');
+        OcultarMostrarTransicion('.platoMenu', '0');
+        OcultarMostrarTransicion('.platoMenu.' + valorCategoria, '1');
     }
 
-    claseDia = valorDia == '0' ? '' : '.' + valorDia;
-    claseTipo = valorSwitch == false ? '' : '.Presencial';
-
-    if (valorDia != 0 && valorSwitch == true) {
-        claseDiaTipo = '.' + valorDia + 'Presencial';
-    }
-
-    if (vCurso == '-1') {
-        OcultarMostrarTransicion('#ListaCursos', '0');
-
-        OcultarMostrarTransicion('#ListaCursos', '1');
-
-        OcultarMostrar('.cursoDisponible', 'none');
-
-        OcultarMostrar('.cursoDisponible' + claseDia + claseTipo + claseDiaTipo, 'block');
-    }
-
-    claseCurso = valorCurso == '0' ? '' : '.' + valorCurso;
-    claseTipo = valorSwitch == false ? '' : '.Presencialx';
-
-
-    OcultarMostrarTransicion('.clase', '0');
-    OcultarMostrarTransicion('.clase' + claseDia + claseCurso + claseTipo, '1');
-
-    if (vCurso != '-1') {
-        window.location.href = "index.html#ListaHorarios";
-    }
 }
 
 
-
+function actualizarSeleccionMenuCategorias() {
+    for (x = 0; x < Categorias.length; x++) {
+        asignarClass(Categorias[x], "MenuLateral text-center");
+    }
+    asignarClass(valorCategoria, "MenuLateralSeleccionado text-center");
+}
 function OcultarMostrarTransicion(selector, tipoDisplay) {
 
     if (tipoDisplay == '0') {
@@ -86,43 +93,29 @@ function OcultarMostrar(selector, tipoDisplay) {
 
 function asignarClass(id, value) {
     document.getElementById(id).className = value;
-
 }
 
-
-
-function cambiarGrisesMultiple(coleccion, value) {
-
-
-    for (var i = 0; i < coleccion.length; i++) {
-
-        coleccion[i].style.filter = 'grayscale(' + value + ')';
-    }
+function abrirModalPedido(data) {
+    Pedido.NombrePlato(data.NombrePlato);
+    Pedido.Precio('S/. ' + data.Precio);
+    Pedido.NombreImagen('Imagenes Reducidas/' + data.NombreImagen + '.jpeg');
+    Pedido.Cantidad("1");
+    Pedido.PrecioNumerico(parseFloat(data.Precio, 10));
+    Pedido.ListaIncluye(data.ListaIncluye);
+    cantidadPedido = 1;
+    document.getElementById("subtotal").innerHTML = "";
+    $("#ModalPedido").modal('show')
+}
+function cerrarModalPedido() {
+    $("#ModalPedido").modal('hide')
 }
 
-function actualizarSeleccionMenuDias() {
-    for (x = 0; x < DiasSemana.length; x++) {
-        asignarClass(DiasSemana[x].Valor, "MenuLateral text-center");
-    }
-    asignarClass(valorDia, "MenuLateralSeleccionado text-center");
-}
+var cantidadPedido = 1;
 
+function actualizarContadorPedido(cambio) {
+    cantidadPedido += cambio;
 
-function actualizarSeleccionCurso() {
-    var coleccion = document.getElementsByClassName('cursoDisponible');
-
-    for (var i = 0; i < coleccion.length; i++) {
-
-        coleccion[i].style.borderColor = 'rgba(0,0,0,.125)';
-    }
-    document.getElementById(valorCurso).style.borderColor = '#0366d6';
-}
-
-function limpiarSeleccionCurso() {
-    var coleccion = document.getElementsByClassName('cursoDisponible');
-
-    for (var i = 0; i < coleccion.length; i++) {
-
-        coleccion[i].style.borderColor = 'rgba(0,0,0,.125)';
-    }
+    cantidadPedido = cantidadPedido < 1 ? 1 : cantidadPedido;
+    Pedido.Cantidad(cantidadPedido + '');
+    document.getElementById("subtotal").innerHTML = "Subtotal: S/. " + (cantidadPedido * Pedido.PrecioNumerico());
 }

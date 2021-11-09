@@ -40,7 +40,7 @@
                     data-bind="foreach: Categorias">
                     <div class="col-4 col-md-4 col-sm-4 col-lg-4">
                         <p data-bind="attr:{class: $data == 'Todos'? 'MenuLateralSeleccionado text-center' : 'MenuLateral text-center', id:$data},
-                             text: $data, click: function(data) { filtroTotal($data , '-1','-1') }">
+                             text: $data, click: function(data) { filtroTotal($data) }">
                         </p>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
 
 
 
-                <div class="card" style="max-width: 540px; margin: 10px 8px 10px 8px;"
-                    data-bind="click: function(data, event) { abrirModalPedido(data) }">
+                <div class="card platoMenu" style="max-width: 540px; margin: 10px 8px 10px 8px;"
+                    data-bind="class: $data.Categoria, click: function(data, event) { abrirModalPedido(data) }">
                     <div class="row g-0">
                         <div class="col-md-4 col-4" style="display: flex;">
                             <img data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpeg'}"
