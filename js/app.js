@@ -22,9 +22,9 @@ ko.applyBindings(Menu, document.getElementById("DivListaMenu"));
 ko.applyBindings(Categorias, document.getElementById("ListaCategorias"));
 
 function validarExistenciaPedido(){
-    var objetoSesion = JSON.parse(localStorage.getItem("PedidoFinal"))
-    PedidoFinal= objetoSesion== '' ? []:objetoSesion;
-    if(objetoSesion != ''){
+    var cadenaSesion = localStorage.getItem("PedidoFinal")
+    PedidoFinal = cadenaSesion == '' ? [] : JSON.parse(cadenaSesion);
+    if(cadenaSesion != ''){
         var SumaTotal = 0;
         PedidoFinal.forEach(element=>SumaTotal+=(element.Cantidad * element.PrecioNumerico));
         document.getElementById("btnPedido").innerHTML = "Verificar Pedido (S/."+SumaTotal+" )";
