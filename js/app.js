@@ -2,7 +2,7 @@ var contador = 0;
 var valorCategoria = '0';
 var cantidadPedido = 1;
 var ModalPedido = document.getElementById("ModalPedido");
-var PedidoFinal = [];
+var PedidoFinal= [];
 var Pedido = {
     "NombrePlato": ko.observable("Prueba"),
     "Categoria": ko.observable(""),
@@ -21,7 +21,16 @@ ko.applyBindings(Pedido, ModalPedido);
 ko.applyBindings(Menu, document.getElementById("DivListaMenu"));
 ko.applyBindings(Categorias, document.getElementById("ListaCategorias"));
 
-
+function validarExistenciaPedido(){
+    var objetoSesion = JSON.parse(localStorage.getItem("PedidoFinal"))
+    PedidoFinal= objetoSesion== '' ? []:objetoSesion;
+    if(objetoSesion != ''){
+        var SumaTotal = 0;
+        PedidoFinal.forEach(element=>SumaTotal+=(element.Cantidad * element.PrecioNumerico));
+        document.getElementById("btnPedido").innerHTML = "Verificar Pedido (S/."+SumaTotal+" )";
+        $("#btnPedido").fadeIn();
+    }
+}
 function filtroTotal(vCategoria) {
 
     valorCategoria = vCategoria;
@@ -56,7 +65,7 @@ function enviarPedidoModal(data) {
     Pedido.ListaIncluye(data.ListaIncluye);
     cantidadPedido = 1;
     document.getElementById("subtotal").innerHTML = "";
-    abrirModalPedido();
+    abrirModalPedido("ModalPedido");
 }
 
 function actualizarContadorPedido(cambio) {
@@ -68,23 +77,28 @@ function actualizarContadorPedido(cambio) {
 }
 
 function agregarPedido(data) {
-    var PedidoAgregado = ko.mapping.toJS(data);
+    
+    PedidoAgregado = ko.mapping.toJS(data);
     PedidoAgregado.Cantidad = cantidadPedido;
     PedidoFinal.push(PedidoAgregado)
-    cerrarModalPedido();
-    $("#btnPedido").fadeIn();
+    localStorage.setItem("PedidoFinal", JSON.stringify(PedidoFinal));
+    cerrarModalPedido("ModalPedido");
+    mostrarSnackBar();
     var SumaTotal = 0;
     PedidoFinal.forEach(element=>SumaTotal+=(element.Cantidad * element.PrecioNumerico));
     document.getElementById("btnPedido").innerHTML = "Verificar Pedido (S/."+SumaTotal+" )";
-    mostrarSnackBar();
+    $("#btnPedido").fadeIn();
+}
+function VerificarPedido(){
+    localStorage.setItem("PedidoFinal", JSON.stringify(PedidoFinal));
+    window.location='pedido.html';
+}
+function abrirModalPedido(id) {
+    $("#"+id).modal('show')
 }
 
-function abrirModalPedido() {
-    $("#ModalPedido").modal('show')
-}
-
-function cerrarModalPedido() {
-    $("#ModalPedido").modal('hide')
+function cerrarModalPedido(id) {
+    $("#"+id).modal('hide')
 }
 
 function asignarClass(id, value) {
