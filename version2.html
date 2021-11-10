@@ -8,7 +8,8 @@
     <!--<base href="/">-->
     <link rel="shortcut icon" href="img/Logotype CEIR Purple.png">
     <base href=".">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet"> 
+    <link href="css/snackbar.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +30,7 @@
                 </a>
             </nav>
         </header>
-        <div class="main">
+        <div class="main" style="margin-bottom: 50px;">
             <div class="content" style=" padding-right: 12px !important;   padding-left: 12px!important;">
 
                 <label class="form-check-label w-100 text-center" style="border: 2px solid #D0c5e7; margin: 15px 0;">
@@ -54,7 +55,7 @@
 
 
                 <div class="card platoMenu" style="max-width: 540px; margin: 10px 8px 10px 8px;"
-                    data-bind="class: $data.Categoria, click: function(data, event) { abrirModalPedido(data) }">
+                    data-bind="class: $data.Categoria, click: function(data, event) { enviarPedidoModal(data) }">
                     <div class="row g-0">
                         <div class="col-md-4 col-4" style="display: flex;">
                             <img data-bind="attr:{src: 'Imagenes Reducidas/'+$data.NombreImagen + '.jpeg'}"
@@ -64,14 +65,11 @@
                             <div style="padding: 10px;">
                                 <h5 class="card-title" data-bind="text: $data.NombrePlato"></h5>
                                 <p class="card-text"><small class="text-muted">Aquí viene una breve descripción del
-                                        plato.</small><a style="color : #0366d6 !important;font-size: 13.5px;"> Ver
-                                        más.</a></p>
+                                        plato.</small><a style="color : #0366d6 !important;font-size: 13.5px;"> Ver detalles.</a></p>
                                 <div class="DivPrecios">
-                                    <p class="card-text PrecioTienda"
-                                        data-bind="text:'S/ '+ $data.Precio">
+                                    <p class="card-text PrecioTienda" data-bind="text:'S/ '+ $data.Precio">
                                     </p>
-                                    <p class="card-text"
-                                        data-bind="text:' S/ '+ $data.Precio">
+                                    <p class="card-text" data-bind="text:' S/ '+ $data.Precio">
                                     </p>
                                 </div>
                                 <a class="Agregar2" data-bind="click: function(data, event) { abrirModalPedido(data) }">
@@ -99,7 +97,7 @@
         </div>
 
         <div class="BotonesFlotantes">
-            <a class="nav-link PunteroMouse" onclick="window.open('https://wa.me/51965379515')">
+            <a class="nav-link PunteroMouse" onclick="window.open('https://wa.me/51923431149')">
                 <img src="img/whatsapp (1).svg" />
             </a>
         </div>
@@ -137,8 +135,7 @@
 
                                 </div>
                                 <div class="DivPrecios" style="bottom: 1%;">
-                                    <p class="card-text"
-                                        data-bind="text:Pedido.Precio">
+                                    <p class="card-text" data-bind="text:Pedido.Precio">
                                     </p>
                                 </div>
 
@@ -162,12 +159,20 @@
 
                 </div>
                 <div>
-                    <button class="btn btn-success" style="display: block; width: 90%; margin: 5px auto 10px auto;">
+                    <button class="btn btn-success" style="display: block; width: 90%; margin: 5px auto 10px auto;"
+                        data-bind="click: function(data, event) { agregarPedido(data) }">
                         Agregar al pedido
                     </button>
                 </div>
             </div>
+
         </div>
+    </div>
+    <div id="snackbar">Producto Agregado</div>
+    <div style="position: fixed;bottom: 3px;width: 70%; left:15%">
+        <button class="btn btn-success"id="btnPedido" style="display: none; width: 100%; margin: 5px auto;">
+            Verificar Pedido
+        </button>
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script type='text/javascript' src="js/jquery-3.6.0.js"></script>
@@ -179,7 +184,7 @@
         crossorigin="anonymous"></script>
     <script type='text/javascript' src='js/knockout-3.5.1.js'></script>
     <script type='text/javascript' src='js/knockout-mapping.js'></script>
-
+    <script src="js/snackbar.js"></script>
     <script src="js/Menu.js"></script>
     <script src="js/app.js"></script>
 
