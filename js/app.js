@@ -4,6 +4,7 @@ var cantidadPedido = 1;
 var ModalPedido = document.getElementById("ModalPedido");
 var PedidoFinal= [];
 var Pedido = {
+    "Id":ko.observable("0"),
     "NombrePlato": ko.observable("Prueba"),
     "Categoria": ko.observable(""),
     "NombreImagen": ko.observable(""),
@@ -57,6 +58,7 @@ function filtroTotal(vCategoria) {
 
 
 function enviarPedidoModal(data) {
+    Pedido.Id(data.Id);
     Pedido.NombrePlato(data.NombrePlato);
     Pedido.Precio('S/. ' + data.Precio);
     Pedido.NombreImagen('Imagenes Reducidas/' + data.NombreImagen + '.jpeg');

@@ -23,10 +23,10 @@
         <header>
             <nav class="MenuNavegacion">
                 <a href="index.html">
-                    Version 1
+                    Version Actual
                 </a>
-                <a href="version2.html">
-                    Version 2
+                <a href="versionAntigua.html">
+                    Version Antigua
                 </a>
             </nav>
         </header>
@@ -36,22 +36,32 @@
             <div class="card" style="max-width: 540px; margin: 10px 8px 5px 8px;">
                 <table class="table" id="TablaPedido">
                     <thead>
-                        <tr>
+                        <tr style="text-align: center;">
+                            <th scope="col"></th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Cantidad</th>
+                            <th scope="col">Cant.</th>
+                            <th scope="col">S/.</th>
+                            <th scope="col">Subt.</th>
+
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: PedidoFinal">
-                        <tr>
+                        <tr style="text-align: center;">
+                            <td>
+                                <a class="nav-link" style="padding: 0px;" data-bind="click: function(data) { EliminarPedido($index) }"> 
+                                    <img src="img/eliminar.svg" />
+                                </a>
+                            </td>
                             <td data-bind="text: NombrePlato"></td>
-                            <td data-bind="text: Precio"></td>
                             <td data-bind="text: Cantidad"></td>
+                            <td data-bind="text: PrecioNumerico"></td>
+                            <td data-bind="text: Cantidad*PrecioNumerico"></td>
                         </tr>
+
                     </tbody>
                 </table>
-                <a href="version2.html">Volver</a>
-                <button onclick="EliminarPedido()">Eliminar Pedido</button>
+                <a href="index.html">Volver</a>
+                <button onclick="EliminarPedidoCompleto()">Eliminar Pedido</button>
             </div>
 
 
